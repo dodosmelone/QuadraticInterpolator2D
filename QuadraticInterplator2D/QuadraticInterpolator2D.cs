@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuadraticInterplator2D
 {
-    public partial class Form1 : Form
+    public partial class QuadraticInterpolator2D : Form
     {
-        public Form1()
+        public QuadraticInterpolator2D()
         {
             InitializeComponent();
         }
