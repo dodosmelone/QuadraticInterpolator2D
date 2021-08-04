@@ -42,23 +42,23 @@
             System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("a6");
             this.btnLoadSamplingPoints = new System.Windows.Forms.Button();
             this.gbSamplingPoints = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lvSamplingPoints = new System.Windows.Forms.ListView();
             this.columnHeaderX1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderX2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderX3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnCompute = new System.Windows.Forms.Button();
             this.gbWhichX = new System.Windows.Forms.GroupBox();
-            this.rbComputeForX1 = new System.Windows.Forms.RadioButton();
-            this.rbComputeForX2 = new System.Windows.Forms.RadioButton();
             this.rbComputeForX3 = new System.Windows.Forms.RadioButton();
+            this.rbComputeForX2 = new System.Windows.Forms.RadioButton();
+            this.rbComputeForX1 = new System.Windows.Forms.RadioButton();
             this.gbCoefficients = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.listView2 = new System.Windows.Forms.ListView();
             this.chCoefficient = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.gbSamplingPoints.SuspendLayout();
             this.gbWhichX.SuspendLayout();
             this.gbCoefficients.SuspendLayout();
@@ -73,10 +73,11 @@
             this.btnLoadSamplingPoints.TabIndex = 0;
             this.btnLoadSamplingPoints.Text = "Load Sampling Points";
             this.btnLoadSamplingPoints.UseVisualStyleBackColor = true;
+            this.btnLoadSamplingPoints.Click += new System.EventHandler(this.btnLoadSamplingPoints_Click);
             // 
             // gbSamplingPoints
             // 
-            this.gbSamplingPoints.Controls.Add(this.listView1);
+            this.gbSamplingPoints.Controls.Add(this.lvSamplingPoints);
             this.gbSamplingPoints.Controls.Add(this.btnLoadSamplingPoints);
             this.gbSamplingPoints.Location = new System.Drawing.Point(12, 12);
             this.gbSamplingPoints.Name = "gbSamplingPoints";
@@ -85,21 +86,21 @@
             this.gbSamplingPoints.TabStop = false;
             this.gbSamplingPoints.Text = "Sampling Points";
             // 
-            // listView1
+            // lvSamplingPoints
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvSamplingPoints.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderX1,
             this.columnHeaderX2,
             this.columnHeaderX3});
-            this.listView1.HideSelection = false;
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            this.lvSamplingPoints.HideSelection = false;
+            this.lvSamplingPoints.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
-            this.listView1.Location = new System.Drawing.Point(6, 20);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(361, 299);
-            this.listView1.TabIndex = 1;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.lvSamplingPoints.Location = new System.Drawing.Point(6, 20);
+            this.lvSamplingPoints.Name = "lvSamplingPoints";
+            this.lvSamplingPoints.Size = new System.Drawing.Size(361, 299);
+            this.lvSamplingPoints.TabIndex = 1;
+            this.lvSamplingPoints.UseCompatibleStateImageBehavior = false;
+            this.lvSamplingPoints.View = System.Windows.Forms.View.Details;
             // 
             // columnHeaderX1
             // 
@@ -109,7 +110,7 @@
             // columnHeaderX2
             // 
             this.columnHeaderX2.Text = "X2";
-            this.columnHeaderX2.Width = 120;
+            this.columnHeaderX2.Width = 115;
             // 
             // columnHeaderX3
             // 
@@ -138,30 +139,11 @@
             this.gbWhichX.TabStop = false;
             this.gbWhichX.Text = "Compute for which X?";
             // 
-            // rbComputeForX1
-            // 
-            this.rbComputeForX1.AutoSize = true;
-            this.rbComputeForX1.Location = new System.Drawing.Point(45, 34);
-            this.rbComputeForX1.Name = "rbComputeForX1";
-            this.rbComputeForX1.Size = new System.Drawing.Size(38, 17);
-            this.rbComputeForX1.TabIndex = 0;
-            this.rbComputeForX1.Text = "X1";
-            this.rbComputeForX1.UseVisualStyleBackColor = true;
-            // 
-            // rbComputeForX2
-            // 
-            this.rbComputeForX2.AutoSize = true;
-            this.rbComputeForX2.Location = new System.Drawing.Point(45, 72);
-            this.rbComputeForX2.Name = "rbComputeForX2";
-            this.rbComputeForX2.Size = new System.Drawing.Size(38, 17);
-            this.rbComputeForX2.TabIndex = 1;
-            this.rbComputeForX2.Text = "X2";
-            this.rbComputeForX2.UseVisualStyleBackColor = true;
-            // 
             // rbComputeForX3
             // 
             this.rbComputeForX3.AutoSize = true;
             this.rbComputeForX3.Checked = true;
+            this.rbComputeForX3.Enabled = false;
             this.rbComputeForX3.Location = new System.Drawing.Point(45, 106);
             this.rbComputeForX3.Name = "rbComputeForX3";
             this.rbComputeForX3.Size = new System.Drawing.Size(38, 17);
@@ -169,6 +151,28 @@
             this.rbComputeForX3.TabStop = true;
             this.rbComputeForX3.Text = "X3";
             this.rbComputeForX3.UseVisualStyleBackColor = true;
+            // 
+            // rbComputeForX2
+            // 
+            this.rbComputeForX2.AutoSize = true;
+            this.rbComputeForX2.Enabled = false;
+            this.rbComputeForX2.Location = new System.Drawing.Point(45, 72);
+            this.rbComputeForX2.Name = "rbComputeForX2";
+            this.rbComputeForX2.Size = new System.Drawing.Size(38, 17);
+            this.rbComputeForX2.TabIndex = 1;
+            this.rbComputeForX2.Text = "X2";
+            this.rbComputeForX2.UseVisualStyleBackColor = true;
+            // 
+            // rbComputeForX1
+            // 
+            this.rbComputeForX1.AutoSize = true;
+            this.rbComputeForX1.Enabled = false;
+            this.rbComputeForX1.Location = new System.Drawing.Point(45, 34);
+            this.rbComputeForX1.Name = "rbComputeForX1";
+            this.rbComputeForX1.Size = new System.Drawing.Size(38, 17);
+            this.rbComputeForX1.TabIndex = 0;
+            this.rbComputeForX1.Text = "X1";
+            this.rbComputeForX1.UseVisualStyleBackColor = true;
             // 
             // gbCoefficients
             // 
@@ -180,6 +184,15 @@
             this.gbCoefficients.TabIndex = 2;
             this.gbCoefficients.TabStop = false;
             this.gbCoefficients.Text = "Coefficients";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(85, 170);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(98, 36);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Export Coefficients";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // listView2
             // 
@@ -211,15 +224,6 @@
             this.chValue.Text = "Value";
             this.chValue.Width = 175;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(85, 170);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 36);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Export Coefficients";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label2);
@@ -231,17 +235,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Computed polynomial";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(242, 48);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "X3 = a1 * X1^2 + a2 * X2^2 + a3 * X1 * X2 \r\n      + a4 * X1 + a5 * X2 \r\n      + a" +
-    "6\r\n";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -252,6 +245,17 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "      = 0.000000 * X1^2 + 0.000000 * X2^2 + 0.00000 * X1 * X2 \r\n      + 0.000000 " +
     " * X1 + 0.000000  * X2 \r\n      + 0.000000 \r\n";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(242, 48);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "X3 = a1 * X1^2 + a2 * X2^2 + a3 * X1 * X2 \r\n      + a4 * X1 + a5 * X2 \r\n      + a" +
+    "6\r\n";
             // 
             // QuadraticInterpolator2D
             // 
@@ -278,7 +282,7 @@
 
         private System.Windows.Forms.Button btnLoadSamplingPoints;
         private System.Windows.Forms.GroupBox gbSamplingPoints;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lvSamplingPoints;
         private System.Windows.Forms.ColumnHeader columnHeaderX1;
         private System.Windows.Forms.ColumnHeader columnHeaderX2;
         private System.Windows.Forms.ColumnHeader columnHeaderX3;
