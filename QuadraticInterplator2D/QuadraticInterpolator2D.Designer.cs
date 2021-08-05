@@ -38,6 +38,7 @@
             System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("a6");
             this.btnLoadSamplingPoints = new System.Windows.Forms.Button();
             this.gbSamplingPoints = new System.Windows.Forms.GroupBox();
+            this.btnClear = new System.Windows.Forms.Button();
             this.lvSamplingPoints = new System.Windows.Forms.ListView();
             this.columnHeaderX1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderX2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -55,7 +56,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbPolyConcrete = new System.Windows.Forms.Label();
             this.lbPolyAbstract = new System.Windows.Forms.Label();
-            this.btnClear = new System.Windows.Forms.Button();
             this.gbSamplingPoints.SuspendLayout();
             this.gbWhichX.SuspendLayout();
             this.gbCoefficients.SuspendLayout();
@@ -83,6 +83,16 @@
             this.gbSamplingPoints.TabIndex = 1;
             this.gbSamplingPoints.TabStop = false;
             this.gbSamplingPoints.Text = "Sampling Points";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(269, 325);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(98, 36);
+            this.btnClear.TabIndex = 2;
+            this.btnClear.Text = "Clear Sampling Points";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // lvSamplingPoints
             // 
@@ -135,7 +145,7 @@
             this.gbWhichX.Size = new System.Drawing.Size(125, 221);
             this.gbWhichX.TabIndex = 3;
             this.gbWhichX.TabStop = false;
-            this.gbWhichX.Text = "Compute for which X?";
+            this.gbWhichX.Text = "Compute for which?";
             // 
             // rbComputeForX3
             // 
@@ -240,6 +250,7 @@
             this.lbPolyConcrete.AutoSize = true;
             this.lbPolyConcrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPolyConcrete.Location = new System.Drawing.Point(12, 77);
+            this.lbPolyConcrete.MaximumSize = new System.Drawing.Size(380, 0);
             this.lbPolyConcrete.Name = "lbPolyConcrete";
             this.lbPolyConcrete.Size = new System.Drawing.Size(346, 48);
             this.lbPolyConcrete.TabIndex = 1;
@@ -256,16 +267,6 @@
             this.lbPolyAbstract.TabIndex = 0;
             this.lbPolyAbstract.Text = "X3 = a1 * X1^2 + a2 * X2^2 + a3 * X1 * X2 \r\n      + a4 * X1 + a5 * X2 \r\n      + a" +
     "6\r\n";
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(269, 325);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(98, 36);
-            this.btnClear.TabIndex = 2;
-            this.btnClear.Text = "Clear Sampling Points";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // QuadraticInterpolator2D
             // 

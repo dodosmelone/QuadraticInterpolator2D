@@ -12,6 +12,10 @@ namespace QuadraticInterplator2D
     {
         private static int nParams = 6;
 
+        private string nameX1;
+        private string nameX2;
+        private string nameX3;
+
         private List<double> X1;
         private List<double> X2;
         private List<double> X3;
@@ -20,6 +24,10 @@ namespace QuadraticInterplator2D
         public QuadraticInterpolator2D()
         {
             InitializeComponent();
+            nameX1 = "X1";
+            nameX2 = "X2";
+            nameX3 = "X3";
+            setXNames();
             lvSamplingPoints.Items.Clear();
             ResetLvCoefficients();
             lbPolyConcrete.Visible = false;
@@ -107,7 +115,16 @@ namespace QuadraticInterplator2D
                             var line = reader.ReadLine();
                             var values = line.Split(';');
 
-                            if (lineCnt > 0)
+                            if (lineCnt == 0)
+                            {
+                                nameX1 = values[0];
+                                nameX2 = values[1];
+                                nameX3 = values[2];
+                                lvSamplingPoints.Columns[0].Text = nameX1;
+                                lvSamplingPoints.Columns[1].Text = nameX2;
+                                lvSamplingPoints.Columns[2].Text = nameX3;
+                            }
+                            else
                             {
                                 double x1 = double.Parse(values[0], CultureInfo.InvariantCulture);
                                 double x2 = double.Parse(values[1], CultureInfo.InvariantCulture);
@@ -132,7 +149,21 @@ namespace QuadraticInterplator2D
                 }
             }
 
+            EnableCompute();
+        }
+
+        private void EnableCompute()
+        {
             btnCompute.Enabled = true;
+            printAbstractPolynomial();
+            setXNames();
+        }
+
+        private void setXNames()
+        {
+            rbComputeForX1.Text = nameX1;
+            rbComputeForX2.Text = nameX2;
+            rbComputeForX3.Text = nameX3;
         }
 
         private void btnCompute_Click(object sender, EventArgs e)
@@ -176,27 +207,9 @@ namespace QuadraticInterplator2D
 
         private void printConcretePolynomial()
         {
-            string arg1 = "";
-            string arg2 = "";
-            string funcVal = "";
-            if (rbComputeForX1.Checked)
-            {
-                arg1 = "X2";
-                arg2 = "X3";
-                funcVal = "X1";
-            }
-            else if (rbComputeForX2.Checked)
-            {
-                arg1 = "X1";
-                arg2 = "X3";
-                funcVal = "X2";
-            }
-            else if (rbComputeForX3.Checked)
-            {
-                arg1 = "X1";
-                arg2 = "X2";
-                funcVal = "X3";
-            }
+            string arg1 = getArg1();
+            string arg2 = getArg2();
+            string funcVal = getFuncVal();
 
             lbPolyConcrete.Text = funcVal + " = " 
                 + String.Format("{0:0.0000}", coefficients[0]) + " * " + arg1 + "^2"
@@ -250,21 +263,21 @@ namespace QuadraticInterplator2D
         {
             if (rbComputeForX1.Checked)
             {
-                return "X2";
+                return nameX2;
             }
             else
             {
-                return "X1";
+                return nameX1;
             }
         }
         private string getArg2() { 
             if (rbComputeForX3.Checked)
             {
-                return "X2";
+                return nameX2;
             }
             else
             {
-                return "X3";
+                return nameX3;
             }
         }
 
@@ -272,15 +285,15 @@ namespace QuadraticInterplator2D
         {
             if (rbComputeForX1.Checked)
             {
-                return "X1";
+                return nameX1;
             }
             if (rbComputeForX2.Checked)
             {
-                return "X2";
+                return nameX2;
             }
             else
             {
-                return "X3";
+                return nameX3;
             }
         }
 
@@ -292,7 +305,7 @@ namespace QuadraticInterplator2D
             
 
             lbPolyAbstract.Text = funcVal + " = a1 * " + arg1 + "^2 + a2 * " + arg2 + "^2 + a3 * " + arg1 + " * " + arg2 + " \r\n"
-                + "      + a4 * " + arg1 + " a5 * " + arg2 + " \r\n"
+                + "      + a4 * " + arg1 + " + a5 * " + arg2 + " \r\n"
                 + "      + a6\r\n";
         }
 
@@ -303,11 +316,23 @@ namespace QuadraticInterplator2D
 
         private void Reset()
         {
+            nameX1 = "X1";
+            nameX2 = "X2";
+            nameX3 = "X3";
             ResetPolynomial();
             ResetLvCoefficients();
-            lvSamplingPoints.Items.Clear();
+            ResetLvSamplePoints();
+            setXNames();
             btnCompute.Enabled = false;
             btnExport.Enabled = false;
+        }
+
+        private void ResetLvSamplePoints()
+        {
+            lvSamplingPoints.Items.Clear();
+            lvSamplingPoints.Columns[0].Text = nameX1;
+            lvSamplingPoints.Columns[0].Text = nameX2;
+            lvSamplingPoints.Columns[0].Text = nameX3;
         }
 
         private void btnExport_Click(object sender, EventArgs e)
