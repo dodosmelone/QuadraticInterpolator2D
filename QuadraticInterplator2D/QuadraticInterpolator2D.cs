@@ -149,14 +149,9 @@ namespace QuadraticInterplator2D
                 }
             }
 
-            EnableCompute();
-        }
-
-        private void EnableCompute()
-        {
-            btnCompute.Enabled = true;
-            printAbstractPolynomial();
             setXNames();
+            printAbstractPolynomial();
+            compute();
         }
 
         private void setXNames()
@@ -166,7 +161,7 @@ namespace QuadraticInterplator2D
             rbComputeForX3.Text = nameX3;
         }
 
-        private void btnCompute_Click(object sender, EventArgs e)
+        private void compute()
         {
             computePolynomialCoefficients();
             printConcretePolynomial();
@@ -234,23 +229,23 @@ namespace QuadraticInterplator2D
 
         private void rbComputeForX2_CheckedChanged(object sender, EventArgs e)
         {
-            ResetPolynomial();
+            printAbstractPolynomial();
             ResetLvCoefficients();
-            btnExport.Enabled = false;
+            compute();
         }
 
         private void rbComputeForX1_CheckedChanged(object sender, EventArgs e)
         {
-            ResetPolynomial();
+            printAbstractPolynomial();
             ResetLvCoefficients();
-            btnExport.Enabled = false;
+            compute();
         }
 
         private void rbComputeForX3_CheckedChanged(object sender, EventArgs e)
         {
-            ResetPolynomial();
+            printAbstractPolynomial();
             ResetLvCoefficients();
-            btnExport.Enabled = false;
+            compute();
         }
 
         private void ResetPolynomial()
@@ -323,7 +318,6 @@ namespace QuadraticInterplator2D
             ResetLvCoefficients();
             ResetLvSamplePoints();
             setXNames();
-            btnCompute.Enabled = false;
             btnExport.Enabled = false;
         }
 

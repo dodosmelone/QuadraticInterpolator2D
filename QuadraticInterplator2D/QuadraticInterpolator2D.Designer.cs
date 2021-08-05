@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem(new string[] {
             "a1",
             ""}, -1);
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("a2");
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("a3");
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("a4");
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("a5");
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("a6");
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("a2");
+            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("a3");
+            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("a4");
+            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("a5");
+            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("a6");
             this.btnLoadSamplingPoints = new System.Windows.Forms.Button();
             this.gbSamplingPoints = new System.Windows.Forms.GroupBox();
             this.btnClear = new System.Windows.Forms.Button();
@@ -43,7 +43,6 @@
             this.columnHeaderX1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderX2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderX3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnCompute = new System.Windows.Forms.Button();
             this.gbWhichX = new System.Windows.Forms.GroupBox();
             this.rbComputeForX3 = new System.Windows.Forms.RadioButton();
             this.rbComputeForX2 = new System.Windows.Forms.RadioButton();
@@ -123,26 +122,14 @@
             this.columnHeaderX3.Text = "X3";
             this.columnHeaderX3.Width = 120;
             // 
-            // btnCompute
-            // 
-            this.btnCompute.Enabled = false;
-            this.btnCompute.Location = new System.Drawing.Point(25, 146);
-            this.btnCompute.Name = "btnCompute";
-            this.btnCompute.Size = new System.Drawing.Size(78, 60);
-            this.btnCompute.TabIndex = 2;
-            this.btnCompute.Text = "Compute quadratic interpolation";
-            this.btnCompute.UseVisualStyleBackColor = true;
-            this.btnCompute.Click += new System.EventHandler(this.btnCompute_Click);
-            // 
             // gbWhichX
             // 
             this.gbWhichX.Controls.Add(this.rbComputeForX3);
             this.gbWhichX.Controls.Add(this.rbComputeForX2);
-            this.gbWhichX.Controls.Add(this.btnCompute);
             this.gbWhichX.Controls.Add(this.rbComputeForX1);
-            this.gbWhichX.Location = new System.Drawing.Point(410, 12);
+            this.gbWhichX.Location = new System.Drawing.Point(410, 56);
             this.gbWhichX.Name = "gbWhichX";
-            this.gbWhichX.Size = new System.Drawing.Size(125, 221);
+            this.gbWhichX.Size = new System.Drawing.Size(125, 140);
             this.gbWhichX.TabIndex = 3;
             this.gbWhichX.TabStop = false;
             this.gbWhichX.Text = "Compute for which?";
@@ -211,12 +198,12 @@
             this.chValue});
             this.lvCoefficients.HideSelection = false;
             this.lvCoefficients.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem7,
-            listViewItem8,
-            listViewItem9,
-            listViewItem10,
-            listViewItem11,
-            listViewItem12});
+            listViewItem13,
+            listViewItem14,
+            listViewItem15,
+            listViewItem16,
+            listViewItem17,
+            listViewItem18});
             this.lvCoefficients.Location = new System.Drawing.Point(6, 19);
             this.lvCoefficients.Name = "lvCoefficients";
             this.lvCoefficients.Size = new System.Drawing.Size(247, 145);
@@ -297,7 +284,6 @@
         private System.Windows.Forms.ColumnHeader columnHeaderX1;
         private System.Windows.Forms.ColumnHeader columnHeaderX2;
         private System.Windows.Forms.ColumnHeader columnHeaderX3;
-        private System.Windows.Forms.Button btnCompute;
         private System.Windows.Forms.GroupBox gbWhichX;
         private System.Windows.Forms.RadioButton rbComputeForX3;
         private System.Windows.Forms.RadioButton rbComputeForX2;
