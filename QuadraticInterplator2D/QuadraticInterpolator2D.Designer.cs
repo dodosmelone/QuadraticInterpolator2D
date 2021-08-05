@@ -28,18 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
-            "0.0",
-            "0.0",
-            "0.0"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
             "a1",
             ""}, -1);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("a2");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("a3");
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("a4");
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("a5");
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("a6");
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("a2");
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("a3");
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("a4");
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("a5");
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("a6");
             this.btnLoadSamplingPoints = new System.Windows.Forms.Button();
             this.gbSamplingPoints = new System.Windows.Forms.GroupBox();
             this.lvSamplingPoints = new System.Windows.Forms.ListView();
@@ -52,13 +48,14 @@
             this.rbComputeForX2 = new System.Windows.Forms.RadioButton();
             this.rbComputeForX1 = new System.Windows.Forms.RadioButton();
             this.gbCoefficients = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.lvCoefficients = new System.Windows.Forms.ListView();
             this.chCoefficient = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbPolyConcrete = new System.Windows.Forms.Label();
+            this.lbPolyAbstract = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
             this.gbSamplingPoints.SuspendLayout();
             this.gbWhichX.SuspendLayout();
             this.gbCoefficients.SuspendLayout();
@@ -67,7 +64,7 @@
             // 
             // btnLoadSamplingPoints
             // 
-            this.btnLoadSamplingPoints.Location = new System.Drawing.Point(143, 325);
+            this.btnLoadSamplingPoints.Location = new System.Drawing.Point(133, 325);
             this.btnLoadSamplingPoints.Name = "btnLoadSamplingPoints";
             this.btnLoadSamplingPoints.Size = new System.Drawing.Size(98, 36);
             this.btnLoadSamplingPoints.TabIndex = 0;
@@ -77,6 +74,7 @@
             // 
             // gbSamplingPoints
             // 
+            this.gbSamplingPoints.Controls.Add(this.btnClear);
             this.gbSamplingPoints.Controls.Add(this.lvSamplingPoints);
             this.gbSamplingPoints.Controls.Add(this.btnLoadSamplingPoints);
             this.gbSamplingPoints.Location = new System.Drawing.Point(12, 12);
@@ -93,8 +91,6 @@
             this.columnHeaderX2,
             this.columnHeaderX3});
             this.lvSamplingPoints.HideSelection = false;
-            this.lvSamplingPoints.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
             this.lvSamplingPoints.Location = new System.Drawing.Point(6, 20);
             this.lvSamplingPoints.Name = "lvSamplingPoints";
             this.lvSamplingPoints.Size = new System.Drawing.Size(361, 299);
@@ -119,12 +115,14 @@
             // 
             // btnCompute
             // 
+            this.btnCompute.Enabled = false;
             this.btnCompute.Location = new System.Drawing.Point(25, 146);
             this.btnCompute.Name = "btnCompute";
             this.btnCompute.Size = new System.Drawing.Size(78, 60);
             this.btnCompute.TabIndex = 2;
             this.btnCompute.Text = "Compute quadratic interpolation";
             this.btnCompute.UseVisualStyleBackColor = true;
+            this.btnCompute.Click += new System.EventHandler(this.btnCompute_Click);
             // 
             // gbWhichX
             // 
@@ -143,7 +141,6 @@
             // 
             this.rbComputeForX3.AutoSize = true;
             this.rbComputeForX3.Checked = true;
-            this.rbComputeForX3.Enabled = false;
             this.rbComputeForX3.Location = new System.Drawing.Point(45, 106);
             this.rbComputeForX3.Name = "rbComputeForX3";
             this.rbComputeForX3.Size = new System.Drawing.Size(38, 17);
@@ -151,33 +148,34 @@
             this.rbComputeForX3.TabStop = true;
             this.rbComputeForX3.Text = "X3";
             this.rbComputeForX3.UseVisualStyleBackColor = true;
+            this.rbComputeForX3.CheckedChanged += new System.EventHandler(this.rbComputeForX3_CheckedChanged);
             // 
             // rbComputeForX2
             // 
             this.rbComputeForX2.AutoSize = true;
-            this.rbComputeForX2.Enabled = false;
             this.rbComputeForX2.Location = new System.Drawing.Point(45, 72);
             this.rbComputeForX2.Name = "rbComputeForX2";
             this.rbComputeForX2.Size = new System.Drawing.Size(38, 17);
             this.rbComputeForX2.TabIndex = 1;
             this.rbComputeForX2.Text = "X2";
             this.rbComputeForX2.UseVisualStyleBackColor = true;
+            this.rbComputeForX2.CheckedChanged += new System.EventHandler(this.rbComputeForX2_CheckedChanged);
             // 
             // rbComputeForX1
             // 
             this.rbComputeForX1.AutoSize = true;
-            this.rbComputeForX1.Enabled = false;
             this.rbComputeForX1.Location = new System.Drawing.Point(45, 34);
             this.rbComputeForX1.Name = "rbComputeForX1";
             this.rbComputeForX1.Size = new System.Drawing.Size(38, 17);
             this.rbComputeForX1.TabIndex = 0;
             this.rbComputeForX1.Text = "X1";
             this.rbComputeForX1.UseVisualStyleBackColor = true;
+            this.rbComputeForX1.CheckedChanged += new System.EventHandler(this.rbComputeForX1_CheckedChanged);
             // 
             // gbCoefficients
             // 
-            this.gbCoefficients.Controls.Add(this.button1);
-            this.gbCoefficients.Controls.Add(this.listView2);
+            this.gbCoefficients.Controls.Add(this.btnExport);
+            this.gbCoefficients.Controls.Add(this.lvCoefficients);
             this.gbCoefficients.Location = new System.Drawing.Point(551, 12);
             this.gbCoefficients.Name = "gbCoefficients";
             this.gbCoefficients.Size = new System.Drawing.Size(263, 221);
@@ -185,34 +183,36 @@
             this.gbCoefficients.TabStop = false;
             this.gbCoefficients.Text = "Coefficients";
             // 
-            // button1
+            // btnExport
             // 
-            this.button1.Location = new System.Drawing.Point(85, 170);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 36);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Export Coefficients";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnExport.Enabled = false;
+            this.btnExport.Location = new System.Drawing.Point(85, 170);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(98, 36);
+            this.btnExport.TabIndex = 2;
+            this.btnExport.Text = "Export Coefficients";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
-            // listView2
+            // lvCoefficients
             // 
-            this.listView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvCoefficients.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.chCoefficient,
             this.chValue});
-            this.listView2.HideSelection = false;
-            this.listView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6,
-            listViewItem7});
-            this.listView2.Location = new System.Drawing.Point(6, 19);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(247, 145);
-            this.listView2.TabIndex = 1;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.View = System.Windows.Forms.View.Details;
+            this.lvCoefficients.HideSelection = false;
+            this.lvCoefficients.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem7,
+            listViewItem8,
+            listViewItem9,
+            listViewItem10,
+            listViewItem11,
+            listViewItem12});
+            this.lvCoefficients.Location = new System.Drawing.Point(6, 19);
+            this.lvCoefficients.Name = "lvCoefficients";
+            this.lvCoefficients.Size = new System.Drawing.Size(247, 145);
+            this.lvCoefficients.TabIndex = 1;
+            this.lvCoefficients.UseCompatibleStateImageBehavior = false;
+            this.lvCoefficients.View = System.Windows.Forms.View.Details;
             // 
             // chCoefficient
             // 
@@ -226,8 +226,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lbPolyConcrete);
+            this.groupBox1.Controls.Add(this.lbPolyAbstract);
             this.groupBox1.Location = new System.Drawing.Point(410, 239);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(404, 140);
@@ -235,27 +235,37 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Computed polynomial";
             // 
-            // label2
+            // lbPolyConcrete
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 77);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(346, 48);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "      = 0.000000 * X1^2 + 0.000000 * X2^2 + 0.00000 * X1 * X2 \r\n      + 0.000000 " +
+            this.lbPolyConcrete.AutoSize = true;
+            this.lbPolyConcrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPolyConcrete.Location = new System.Drawing.Point(12, 77);
+            this.lbPolyConcrete.Name = "lbPolyConcrete";
+            this.lbPolyConcrete.Size = new System.Drawing.Size(346, 48);
+            this.lbPolyConcrete.TabIndex = 1;
+            this.lbPolyConcrete.Text = "      = 0.000000 * X1^2 + 0.000000 * X2^2 + 0.00000 * X1 * X2 \r\n      + 0.000000 " +
     " * X1 + 0.000000  * X2 \r\n      + 0.000000 \r\n";
             // 
-            // label1
+            // lbPolyAbstract
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(242, 48);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "X3 = a1 * X1^2 + a2 * X2^2 + a3 * X1 * X2 \r\n      + a4 * X1 + a5 * X2 \r\n      + a" +
+            this.lbPolyAbstract.AutoSize = true;
+            this.lbPolyAbstract.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPolyAbstract.Location = new System.Drawing.Point(12, 23);
+            this.lbPolyAbstract.Name = "lbPolyAbstract";
+            this.lbPolyAbstract.Size = new System.Drawing.Size(242, 48);
+            this.lbPolyAbstract.TabIndex = 0;
+            this.lbPolyAbstract.Text = "X3 = a1 * X1^2 + a2 * X2^2 + a3 * X1 * X2 \r\n      + a4 * X1 + a5 * X2 \r\n      + a" +
     "6\r\n";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(269, 325);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(98, 36);
+            this.btnClear.TabIndex = 2;
+            this.btnClear.Text = "Clear Sampling Points";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // QuadraticInterpolator2D
             // 
@@ -292,13 +302,14 @@
         private System.Windows.Forms.RadioButton rbComputeForX2;
         private System.Windows.Forms.RadioButton rbComputeForX1;
         private System.Windows.Forms.GroupBox gbCoefficients;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListView listView2;
+        private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.ListView lvCoefficients;
         private System.Windows.Forms.ColumnHeader chCoefficient;
         private System.Windows.Forms.ColumnHeader chValue;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbPolyConcrete;
+        private System.Windows.Forms.Label lbPolyAbstract;
+        private System.Windows.Forms.Button btnClear;
     }
 }
 
